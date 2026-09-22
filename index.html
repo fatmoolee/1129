@@ -303,7 +303,7 @@
           </div>
         </div>
 
-        <!-- 卡片 2：馬箏 Katrina (放大比例 scale-[1.4] 聚焦人物) -->
+        <!-- 卡片 2：馬箏 Katrina (人物往上提升並放大至與其他講員一致) -->
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="馬箏 分享卡片">
           <div class="flip-card-inner shadow-2xl">
             <!-- 正面 -->
@@ -311,10 +311,10 @@
               <img 
                 src="https://i.postimg.cc/rFY6081k/S-80027672-0.jpg" 
                 alt="馬箏 Katrina" 
-                class="absolute inset-0 w-full h-full object-cover object-[center_15%] scale-[1.4]" 
+                class="absolute inset-0 w-full h-full object-cover object-[center_25%] scale-[1.65] -translate-y-7 brightness-110 contrast-105 filter" 
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/30 to-transparent"></div>
               <div class="relative z-10 p-6">
                 <h3 class="font-serif text-2xl text-pearl-50 font-bold tracking-wider mb-1">馬箏 <span class="text-base font-light text-slate-300">Katrina</span></h3>
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">金鐘入圍主持人、創作歌手</p>
@@ -562,7 +562,7 @@
                 required 
                 class="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 transition-all appearance-none font-sans cursor-pointer">
                 <option value="" disabled selected>請選擇得知管道</option>
-                <option value="社群媒體">社群媒體 (Instagram / Facebook)</option>
+                <option value="社群媒體 (IG、FB、Podcast、LINE)">社群媒體 (IG、FB、Podcast、LINE)</option>
                 <option value="親朋好友">親朋好友推薦</option>
                 <option value="教會單張">教會單張宣傳</option>
                 <option value="其他">其他途徑</option>
