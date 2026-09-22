@@ -94,9 +94,18 @@
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.75s cubic-bezier(0.4, 0.0, 0.2, 1);
+      transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
       transform-style: preserve-3d;
     }
+
+    /* 電腦版：滑鼠移入自動翻轉呈現分享主題，移出自動翻回照片 */
+    @media (hover: hover) and (pointer: fine) {
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+    }
+
+    /* 手機版或點擊觸發翻轉 */
     .flip-card.is-flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -265,14 +274,14 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- 卡片 1：蔣瑀 Sarah (水平翻轉 scale-x-[-1]) -->
-        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="蔣瑀 分享卡片">
-          <div class="flip-card-inner shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="蔣瑀 分享卡片">
+          <div class="flip-card-inner shadow-2xl">
             <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/sgqR8Vxw/IMG-6574.jpg" 
                 alt="蔣瑀 Sarah" 
-                class="absolute inset-0 w-full h-full object-cover object-top scale-x-[-1] transition-transform duration-700 group-hover:scale-105" 
+                class="absolute inset-0 w-full h-full object-cover object-top scale-x-[-1]" 
                 loading="lazy"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
@@ -283,27 +292,26 @@
             </div>
             <!-- 背面 -->
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#1a1426] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
-              <div class="card-progress absolute top-0 left-0 h-1 bg-gold-400/60 w-0 transition-all duration-300"></div>
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">01</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">當愛沒有如願</h4>
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">面對失望與拒絕</p>
               </div>
-              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2">點擊翻回</span>
+              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
             </div>
           </div>
         </div>
 
         <!-- 卡片 2：馬箏 Katrina (放大比例 scale-[1.4] 聚焦人物) -->
-        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="馬箏 分享卡片">
-          <div class="flip-card-inner shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="馬箏 分享卡片">
+          <div class="flip-card-inner shadow-2xl">
             <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/rFY6081k/S-80027672-0.jpg" 
                 alt="馬箏 Katrina" 
-                class="absolute inset-0 w-full h-full object-cover object-[center_15%] scale-[1.4] transition-transform duration-700 group-hover:scale-[1.45]" 
+                class="absolute inset-0 w-full h-full object-cover object-[center_15%] scale-[1.4]" 
                 loading="lazy"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
@@ -314,27 +322,26 @@
             </div>
             <!-- 背面 -->
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#19152b] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
-              <div class="card-progress absolute top-0 left-0 h-1 bg-gold-400/60 w-0 transition-all duration-300"></div>
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">02</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">在失去以後</h4>
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">生活該怎麼繼續</p>
               </div>
-              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2">點擊翻回</span>
+              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
             </div>
           </div>
         </div>
 
         <!-- 卡片 3：品恩 William (放大 scale-150 聚焦右側避開左側螢幕) -->
-        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="品恩 分享卡片">
-          <div class="flip-card-inner shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+        <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="品恩 分享卡片">
+          <div class="flip-card-inner shadow-2xl">
             <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/1tRMrFSK/ES-672.jpg" 
                 alt="品恩 William" 
-                class="absolute inset-0 w-full h-full object-cover object-[70%_15%] scale-[1.5] transition-transform duration-700 group-hover:scale-[1.55]" 
+                class="absolute inset-0 w-full h-full object-cover object-[70%_15%] scale-[1.5]" 
                 loading="lazy"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
@@ -345,14 +352,13 @@
             </div>
             <!-- 背面 -->
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#171424] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
-              <div class="card-progress absolute top-0 left-0 h-1 bg-gold-400/60 w-0 transition-all duration-300"></div>
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">03</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">看起來很好</h4>
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">是這個時代最累的事</p>
               </div>
-              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2">點擊翻回</span>
+              <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
             </div>
           </div>
         </div>
@@ -783,49 +789,47 @@
       setInterval(updateTimer, 1000);
     }
 
-    // 2. 講者卡片翻轉與 8 秒自動翻回機制
-    const cardTimers = new Map();
+    // 2. 講者卡片互動（電腦版純懸停 Hover 翻轉，手機版點擊切換與點擊空白處自動翻回）
+    function toggleCard(event, cardElement) {
+      // 若是電腦版滑鼠環境，hover 已自動處理翻轉，無需觸控點擊
+      const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      if (!isTouchDevice) return;
 
-    function toggleCard(cardElement) {
-      const isFlipped = cardElement.classList.toggle('is-flipped');
-      cardElement.setAttribute('aria-pressed', isFlipped ? 'true' : 'false');
+      if (event) event.stopPropagation();
 
-      if (cardTimers.has(cardElement)) {
-        clearTimeout(cardTimers.get(cardElement));
-        cardTimers.delete(cardElement);
-      }
+      const isCurrentlyFlipped = cardElement.classList.contains('is-flipped');
 
-      const progressBar = cardElement.querySelector('.card-progress');
-      if (progressBar) progressBar.style.width = '0%';
+      // 將其他所有卡片翻回正面照片
+      document.querySelectorAll('.flip-card').forEach(c => {
+        c.classList.remove('is-flipped');
+        c.setAttribute('aria-pressed', 'false');
+      });
 
-      if (isFlipped) {
-        if (progressBar) {
-          progressBar.style.transition = 'width 8s linear';
-          requestAnimationFrame(() => {
-            progressBar.style.width = '100%';
-          });
-        }
-
-        const timerId = setTimeout(() => {
-          cardElement.classList.remove('is-flipped');
-          cardElement.setAttribute('aria-pressed', 'false');
-          if (progressBar) {
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-          }
-          cardTimers.delete(cardElement);
-        }, 8000);
-
-        cardTimers.set(cardElement, timerId);
+      // 若目前未翻開，則翻至背面主題
+      if (!isCurrentlyFlipped) {
+        cardElement.classList.add('is-flipped');
+        cardElement.setAttribute('aria-pressed', 'true');
       }
     }
 
     function handleCardKey(event, cardElement) {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        toggleCard(cardElement);
+        const isCurrentlyFlipped = cardElement.classList.contains('is-flipped');
+        cardElement.classList.toggle('is-flipped', !isCurrentlyFlipped);
+        cardElement.setAttribute('aria-pressed', (!isCurrentlyFlipped).toString());
       }
     }
+
+    // 手機版：點擊卡片以外的任何空白區域，自動全部翻回正面照片
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.flip-card')) {
+        document.querySelectorAll('.flip-card').forEach(c => {
+          c.classList.remove('is-flipped');
+          c.setAttribute('aria-pressed', 'false');
+        });
+      }
+    });
 
     // 3. 手機版浮動按鈕在表單區域時自動淡出隱藏
     function initStickyButtonObserver() {
