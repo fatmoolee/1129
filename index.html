@@ -1,1015 +1,2029 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW" class="scroll-smooth">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>第七屆療癒之夜｜眼淚變珍珠 — 官方活動報名</title>
+
   
+
   <!-- Google Fonts: 經典宋體 Noto Serif TC、襯線標題 Cinzel 與 Cormorant Garamond -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   
+
   <!-- Tailwind CSS CDN -->
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   
+
   <script>
+
     tailwind.config = {
+
       theme: {
+
         extend: {
+
           fontFamily: {
+
             serif: ['"Noto Serif TC"', 'Georgia', 'serif'],
+
             display: ['Cinzel', '"Noto Serif TC"', 'serif'],
+
             quote: ['"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
+
             sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+
           },
+
           colors: {
+
             night: {
+
               950: '#070a12', // 深夜墨黑
+
               900: '#0b1220', // 深夜藍
+
               850: '#11182c',
+
               800: '#162038',
+
               700: '#233252',
+
             },
+
             pearl: {
+
               50: '#faf8f5',
+
               100: '#f5f0e8',
+
               200: '#eee5d6',
+
               300: '#dfd1b8',
+
               400: '#cbb692',
+
               glow: 'rgba(255, 250, 240, 0.85)',
+
             },
+
             gold: {
+
               400: '#e5c07b',
+
               500: '#d4af37',
+
               600: '#b89228',
+
               glow: 'rgba(212, 175, 55, 0.45)',
+
             },
+
             paper: '#f9f6f0',
+
             mist: '#e8e2d5',
+
           },
+
           boxShadow: {
+
             'pearl-subtle': '0 8px 32px -4px rgba(212, 175, 55, 0.12), 0 2px 12px rgba(255, 255, 255, 0.05)',
+
             'pearl-float': '0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 25px 2px rgba(212, 175, 55, 0.25)',
+
           }
+
         }
+
       }
+
     }
+
   </script>
 
+
+
   <style>
+
     /* 全站基礎抗鋸齒與平滑選擇 */
+
     body {
+
       background-color: #070a12;
+
       color: #e2e8f0;
+
       font-family: 'Inter', -apple-system, sans-serif;
+
       overflow-x: hidden;
+
       -webkit-font-smoothing: antialiased;
+
       -moz-osx-font-smoothing: grayscale;
+
     }
+
+
 
     /* 紙張噪點質感層 (CSS 純代碼生成) */
+
     .bg-grain {
+
       background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+
       background-size: 24px 24px;
+
     }
+
+
 
     /* 淺色羊皮紙質感 */
+
     .bg-paper-grain {
+
       background-color: #FAF7F2;
+
       background-image: radial-gradient(rgba(60, 50, 40, 0.04) 1px, transparent 0);
+
       background-size: 20px 20px;
+
     }
+
+
 
     /* 首頁主視覺雙向自然羽化漸層 */
+
     .hero-mask-overlay {
+
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.82) 0%, rgba(11, 18, 32, 0.7) 45%, rgba(7, 10, 18, 0.96) 100%);
+
     }
+
+
 
     /* 講員 3D 翻轉卡片容器 */
+
     .flip-card {
+
       perspective: 1200px;
+
     }
+
     .flip-card-inner {
+
       position: relative;
+
       width: 100%;
+
       height: 100%;
+
       transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+
       transform-style: preserve-3d;
+
     }
+
+
 
     /* 電腦版：滑鼠移入自動翻轉呈現分享主題，移出自動翻回照片 */
+
     @media (hover: hover) and (pointer: fine) {
+
       .flip-card:hover .flip-card-inner {
+
         transform: rotateY(180deg);
+
       }
+
     }
+
+
 
     /* 手機版或點擊觸發翻轉 */
+
     .flip-card.is-flipped .flip-card-inner {
+
       transform: rotateY(180deg);
+
     }
+
     .flip-card-front, .flip-card-back {
+
       position: absolute;
+
       width: 100%;
+
       height: 100%;
+
       -webkit-backface-visibility: hidden;
+
       backface-visibility: hidden;
+
       border-radius: 1.25rem;
+
     }
+
     .flip-card-back {
+
       transform: rotateY(180deg);
+
     }
+
+
 
     /* 珍珠呼吸微光動態 */
+
     @keyframes pearlPulse {
+
       0%, 100% { opacity: 0.35; transform: scale(1); }
+
       50% { opacity: 0.85; transform: scale(1.08); }
-    }
-    .animate-pearl-pulse {
-      animation: pearlPulse 4.5s ease-in-out infinite;
+
     }
 
-    /* 減緩動畫設定 (無障礙) */
-    @media (prefers-reduced-motion: reduce) {
-      *, ::before, ::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
+    .animate-pearl-pulse {
+
+      animation: pearlPulse 4.5s ease-in-out infinite;
+
     }
+
+
+
+    /* 減緩動畫設定 (無障礙) */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *, ::before, ::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
+      }
+
+    }
+
   </style>
+
 </head>
+
+
 
 <body class="min-h-screen relative flex flex-col justify-between selection:bg-gold-500/30 selection:text-pearl-100">
 
+
+
   <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-night-950/70 border-b border-white/5 transition-all duration-300">
+
     <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+
       <!-- 品牌與活動名稱 -->
+
       <a href="#" class="flex items-center gap-2.5 group">
+
         <span class="w-2.5 h-2.5 rounded-full bg-gold-400 shadow-[0_0_10px_#d4af37]"></span>
+
         <span class="font-serif tracking-widest text-sm sm:text-base text-pearl-100 group-hover:text-gold-400 transition-colors">
+
           眼淚變珍珠
+
         </span>
+
       </a>
 
+
+
       <!-- 導航連結 -->
+
       <nav class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+
         <a href="#speakers" class="text-slate-300 hover:text-gold-400 transition-colors font-serif tracking-wider">
+
           走進故事
+
         </a>
+
         <a href="#register" class="px-4 py-1.5 rounded-full border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-night-950 transition-all font-medium">
+
           立即報名
+
         </a>
+
       </nav>
+
     </div>
+
   </header>
 
+
+
   <section class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden bg-night-950">
+
     <!-- 主視覺整合背景：雙向羽化融入夜空 -->
+
     <div class="absolute inset-0 z-0">
+
       <img 
+
         src="https://i.postimg.cc/Gm82ZqFV/yan-lei-bian-zhen-zhu-zhu-shi-jue1-(2).png" 
+
         alt="第七屆療癒之夜：眼淚變珍珠 主視覺" 
+
         class="w-full h-full object-cover object-center opacity-65 md:opacity-75 scale-105 filter brightness-95"
+
       />
+
       <!-- 柔和暈染漸層疊層 -->
+
       <div class="absolute inset-0 hero-mask-overlay"></div>
+
       <div class="absolute inset-0 bg-grain"></div>
+
     </div>
+
+
 
     <!-- 首頁文字內容與倒數計時器 -->
+
     <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-8">
+
       <!-- 單一沉穩標籤 -->
+
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+
         <span class="w-2 h-2 rounded-full bg-gold-400 animate-pearl-pulse"></span>
+
         <span class="text-xs tracking-[0.25em] text-pearl-200 font-serif">第七屆療癒之夜</span>
+
       </div>
+
+
 
       <!-- 活動主標題 -->
+
       <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-[0.15em] text-pearl-50 mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+
         眼淚變珍珠
+
       </h1>
 
+
+
       <!-- 指定斷行之詩意副標 -->
+
       <p class="font-serif text-lg sm:text-2xl text-slate-200 font-light leading-relaxed tracking-wider mb-8 drop-shadow-md">
+
         才發現，<br>
+
         每場大雨都沒有白白落下。
+
       </p>
+
+
 
       <!-- 活動基本資訊條 -->
+
       <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-5 text-sm sm:text-base text-slate-300 font-serif tracking-widest mb-10">
+
         <span class="text-gold-400 font-semibold">2026.11.29 SUN</span>
+
         <span class="text-white/30 hidden sm:inline">|</span>
+
         <span>16:00–18:00</span>
+
         <span class="text-white/30 hidden sm:inline">|</span>
+
         <span>台北真理堂 2 樓大會堂</span>
+
         <span class="text-white/30 hidden sm:inline">|</span>
+
         <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-xs border border-gold-400/30">免費活動</span>
+
       </div>
+
+
 
       <!-- 典雅極簡倒數計時器 -->
+
       <div class="max-w-xl mx-auto mb-12 p-6 rounded-2xl bg-night-950/60 backdrop-blur-md border border-gold-400/25 shadow-pearl-subtle">
+
         <p class="text-xs uppercase tracking-[0.3em] text-gold-400/80 mb-4 font-display">Time Until Gathering</p>
+
         <div class="grid grid-cols-4 gap-3 text-center">
+
           <div class="flex flex-col items-center">
+
             <span id="countdown-days" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
+
             <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">天</span>
+
           </div>
+
           <div class="flex flex-col items-center border-l border-white/10">
+
             <span id="countdown-hours" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
+
             <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">時</span>
+
           </div>
+
           <div class="flex flex-col items-center border-l border-white/10">
+
             <span id="countdown-minutes" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
+
             <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">分</span>
+
           </div>
+
           <div class="flex flex-col items-center border-l border-white/10">
+
             <span id="countdown-seconds" class="text-3xl sm:text-4xl font-display font-semibold text-gold-400">--</span>
+
             <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">秒</span>
+
           </div>
+
         </div>
+
       </div>
+
+
 
       <!-- 首頁引導按鈕 -->
+
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
         <a href="#register" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 text-night-950 font-serif font-bold tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-pearl-subtle text-base">
+
           立即報名
+
         </a>
+
         <a href="#speakers" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-pearl-100 font-serif tracking-widest hover:bg-white/10 active:scale-95 transition-all text-base">
+
           走進故事
+
         </a>
+
       </div>
+
     </div>
+
   </section>
+
+
 
   <section class="relative py-20 px-6 bg-night-900 border-t border-white/5 overflow-hidden">
+
     <div class="max-w-3xl mx-auto text-center relative z-10">
+
       <div class="w-10 h-0.5 bg-gold-400/40 mx-auto mb-10"></div>
+
       <p class="font-serif text-lg sm:text-2xl text-slate-300 font-light leading-loose tracking-wider space-y-3">
+
         <span>有些日子，我們以為自己只是失去了。</span><br>
+
         <span>後來才明白，那些曾經接住我們的歌、故事與話語，</span><br>
+
         <span>也可能在另一場大雨裡，成為某個人的<span class="text-gold-400 font-normal">珍珠</span>。</span>
+
       </p>
+
       <div class="w-10 h-0.5 bg-gold-400/40 mx-auto mt-10"></div>
+
     </div>
+
   </section>
+
+
 
   <section id="speakers" class="py-16 px-4 sm:px-6 bg-night-950 relative overflow-hidden">
+
     <!-- 珍珠柔和光暈背景 -->
+
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-400/5 rounded-full blur-[140px] pointer-events-none"></div>
 
+
+
     <div class="max-w-6xl mx-auto relative z-10">
+
       <!-- 區塊標題與指定斷行文字 -->
+
       <div class="text-center max-w-xl mx-auto mb-12">
+
         <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-display">GUEST SPEAKERS</span>
+
         <p class="font-serif text-base sm:text-lg text-slate-300 mt-4 leading-relaxed tracking-wider">
+
           關於沒有如願的愛、突如其來的失去，<br>
+
           以及努力讓自己看起來很好的疲憊。
+
         </p>
+
       </div>
+
+
 
       <!-- 三張獨立翻牌卡片 -->
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
         
+
         <!-- 卡片 1：蔣瑀 Sarah (水平翻轉 scale-x-[-1]) -->
+
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="蔣瑀 分享卡片">
+
           <div class="flip-card-inner shadow-2xl">
+
             <!-- 正面 -->
+
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
+
               <img 
+
                 src="https://i.postimg.cc/sgqR8Vxw/IMG-6574.jpg" 
+
                 alt="蔣瑀 Sarah" 
+
                 class="absolute inset-0 w-full h-full object-cover object-top scale-x-[-1]" 
+
                 loading="lazy"
+
               />
+
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+
               <div class="relative z-10 p-6">
+
                 <h3 class="font-serif text-2xl text-pearl-50 font-bold tracking-wider mb-1">蔣瑀 <span class="text-base font-light text-slate-300">Sarah</span></h3>
+
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">5.5 萬人追蹤｜@weakcan 創作者</p>
+
               </div>
+
             </div>
+
             <!-- 背面 -->
+
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#1a1426] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">01</div>
+
               <div class="my-auto space-y-4">
+
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">當愛沒有如願</h4>
+
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
+
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">面對失望與拒絕</p>
+
               </div>
+
               <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
+
             </div>
+
           </div>
+
         </div>
+
+
 
         <!-- 卡片 2：馬箏 Katrina (人物往上提升並放大至與其他講員一致) -->
+
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="馬箏 分享卡片">
+
           <div class="flip-card-inner shadow-2xl">
+
             <!-- 正面 -->
+
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
+
               <img 
+
                 src="https://i.postimg.cc/rFY6081k/S-80027672-0.jpg" 
+
                 alt="馬箏 Katrina" 
+
                 class="absolute inset-0 w-full h-full object-cover object-[center_25%] scale-[1.65] -translate-y-7 brightness-110 contrast-105 filter" 
+
                 loading="lazy"
+
               />
+
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/30 to-transparent"></div>
+
               <div class="relative z-10 p-6">
+
                 <h3 class="font-serif text-2xl text-pearl-50 font-bold tracking-wider mb-1">馬箏 <span class="text-base font-light text-slate-300">Katrina</span></h3>
+
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">金鐘入圍主持人、創作歌手</p>
+
               </div>
+
             </div>
+
             <!-- 背面 -->
+
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#19152b] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">02</div>
+
               <div class="my-auto space-y-4">
+
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">在失去以後</h4>
+
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
+
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">生活該怎麼繼續</p>
+
               </div>
+
               <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
+
             </div>
+
           </div>
+
         </div>
+
+
 
         <!-- 卡片 3：品恩 William (放大 scale-150 聚焦右側避開左側螢幕) -->
+
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="品恩 分享卡片">
+
           <div class="flip-card-inner shadow-2xl">
+
             <!-- 正面 -->
+
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
+
               <img 
+
                 src="https://i.postimg.cc/1tRMrFSK/ES-672.jpg" 
+
                 alt="品恩 William" 
+
                 class="absolute inset-0 w-full h-full object-cover object-[70%_15%] scale-[1.5]" 
+
                 loading="lazy"
+
               />
+
               <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+
               <div class="relative z-10 p-6">
+
                 <h3 class="font-serif text-2xl text-pearl-50 font-bold tracking-wider mb-1">品恩 <span class="text-base font-light text-slate-300">William</span></h3>
+
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">療癒系歌唱老師</p>
+
               </div>
+
             </div>
+
             <!-- 背面 -->
+
             <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#171424] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">03</div>
+
               <div class="my-auto space-y-4">
+
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">看起來很好</h4>
+
                 <div class="w-8 h-px bg-gold-400/40 mx-auto"></div>
+
                 <p class="font-serif text-base text-slate-300 leading-relaxed tracking-wider">是這個時代最累的事</p>
+
               </div>
+
               <span class="text-[11px] text-slate-500 font-serif tracking-widest mb-2 sm:hidden">點擊可翻回照片</span>
+
             </div>
+
           </div>
+
         </div>
 
+
+
       </div>
+
     </div>
+
   </section>
+
+
 
   <section class="py-16 px-4 sm:px-6 bg-night-900 border-t border-b border-white/5 relative">
+
     <div class="max-w-3xl mx-auto text-center">
+
       <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-display">LAST YEAR'S MEMORY</span>
+
       <h2 class="font-serif text-2xl sm:text-3xl text-pearl-100 font-bold tracking-widest mt-2 mb-8">
+
         走過那場雨的夜晚
+
       </h2>
 
+
+
       <!-- Instagram 嵌入容器 -->
+
       <div class="flex justify-center w-full min-h-[460px] sm:min-h-[580px] items-center">
+
         <div class="w-full max-w-[420px] mx-auto overflow-hidden rounded-2xl shadow-2xl border border-white/10 bg-night-950/80 p-1">
+
           <blockquote 
+
             class="instagram-media" 
+
             data-instgrm-captioned
+
             data-instgrm-permalink="https://www.instagram.com/reel/DUP2F9biE8O/?utm_source=ig_embed&amp;utm_campaign=loading" 
+
             data-instgrm-version="14"
+
             style="background:#0b1220; border:0; border-radius:14px; box-shadow:none; margin: 0 auto; max-width:100%; width:100%; min-width:300px; padding:0;">
+
             <div style="padding: 32px 16px; text-align: center;">
+
               <a href="https://www.instagram.com/reel/DUP2F9biE8O/" target="_blank" rel="noopener noreferrer" style="color:#d4af37; font-family:'Noto Serif TC', serif; font-size:14px; text-decoration:none; display:inline-flex; flex-direction:column; align-items:center; gap:12px;">
+
                 <svg class="w-10 h-10 text-gold-400 fill-current" viewBox="0 0 24 24">
+
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+
                 </svg>
+
                 <span>點擊前往 Instagram 觀看第六屆回顧影片</span>
+
               </a>
+
             </div>
+
           </blockquote>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
+
+
 
   <section class="py-20 px-6 bg-night-950 relative">
+
     <div class="max-w-4xl mx-auto">
+
       <div class="text-center max-w-2xl mx-auto mb-16">
+
         <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-display">THE EXCHANGE</span>
+
         <h2 class="font-serif text-2xl sm:text-4xl text-pearl-50 font-bold tracking-widest mt-2 leading-relaxed">
+
           一封信，交換一顆珍珠<br>
+
           <span class="text-lg sm:text-2xl font-light text-slate-300">給一個正在大雨中的人</span>
+
         </h2>
+
         <p class="font-serif text-sm sm:text-base text-slate-300 mt-6 leading-loose">
+
           每位參加者，請帶來一張裝進信封裡的安慰卡片。<br>
+
           你不會知道收到它的人是誰。<br>
+
           只要想像：此刻，有一個人正需要一點溫柔的陪伴。
+
         </p>
+
       </div>
+
+
 
       <!-- 三個步驟垂直導覽 -->
+
       <div class="relative border-l border-gold-400/20 ml-4 sm:ml-32 space-y-12 pb-4">
+
         <!-- 步驟一 -->
+
         <div class="relative pl-8 sm:pl-12 group">
+
           <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-night-950 border border-gold-400 text-gold-400 flex items-center justify-center font-display text-xs">
+
             01
+
           </div>
+
           <h3 class="font-serif text-xl text-pearl-100 font-bold tracking-wider mb-2">想像一個需要被安慰的人</h3>
+
           <p class="font-serif text-slate-400 text-sm sm:text-base leading-relaxed">
+
             寫下一封他此刻需要收到的信。一句曾接住你的歌詞、一句話，或一段安靜的問候。
+
           </p>
+
         </div>
+
+
 
         <!-- 步驟二 -->
+
         <div class="relative pl-8 sm:pl-12 group">
+
           <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-night-950 border border-gold-400 text-gold-400 flex items-center justify-center font-display text-xs">
+
             02
+
           </div>
+
           <h3 class="font-serif text-xl text-pearl-100 font-bold tracking-wider mb-2">裝進信封帶來</h3>
+
           <p class="font-serif text-slate-400 text-sm sm:text-base leading-relaxed">
+
             卡片可以署名，也可以匿名。<br>
+
             請注意：<strong>信封外請不要寫收件人</strong>。
+
           </p>
+
         </div>
+
+
 
         <!-- 步驟三 -->
+
         <div class="relative pl-8 sm:pl-12 group">
+
           <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-night-950 border border-gold-400 text-gold-400 flex items-center justify-center font-display text-xs">
+
             03
+
           </div>
+
           <h3 class="font-serif text-xl text-pearl-100 font-bold tracking-wider mb-2">帶走另一顆珍珠</h3>
+
           <p class="font-serif text-slate-400 text-sm sm:text-base leading-relaxed">
+
             活動尾聲，你也會在安靜的樂音中，<br>
+
             收到另一位參加者留在現場的信。
+
           </p>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
+
+
   <section id="register" class="py-20 px-4 sm:px-6 bg-paper-grain text-slate-800 relative transition-colors duration-500">
+
     <div class="max-w-3xl mx-auto">
+
       
+
       <!-- 活動資訊大標題 -->
+
       <div class="text-center mb-16">
+
         <span class="text-xs uppercase tracking-[0.25em] text-amber-800/80 font-display">EVENT DETAILS</span>
+
         <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-amber-950 tracking-[0.12em] mt-2 mb-4 drop-shadow-sm">
+
           為自己<br>留下一個午後
+
         </h2>
+
         <div class="w-12 h-0.5 bg-amber-700/40 mx-auto mt-4 mb-8"></div>
 
+
+
         <!-- 詳細條目資訊 -->
+
         <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4 text-left font-serif">
+
           <div class="flex items-start gap-3">
+
             <span class="font-bold text-amber-900 shrink-0">日期｜</span>
+
             <span>2026 年 11 月 29 日（日）</span>
+
           </div>
+
           <div class="flex items-start gap-3">
+
             <span class="font-bold text-amber-900 shrink-0">時間｜</span>
+
             <span>16:00–18:00（15:30 開放入場）</span>
+
           </div>
+
           <div class="flex items-start gap-3">
+
             <span class="font-bold text-amber-900 shrink-0">地點｜</span>
+
             <div>
+
               <p class="font-semibold text-slate-900">台北真理堂 2 樓大會堂</p>
+
               <p class="text-xs text-slate-500 mt-0.5">台北市大安區新生南路三段 86 號</p>
+
             </div>
+
           </div>
+
           <div class="flex items-start gap-3">
+
             <span class="font-bold text-amber-900 shrink-0">費用｜</span>
+
             <span class="text-emerald-700 font-semibold">免費參加（名額有限，額滿為止）</span>
+
           </div>
+
         </div>
+
       </div>
 
+
+
       <!-- 報名表單區塊 -->
+
       <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-xl relative overflow-hidden">
+
         <div class="text-center mb-8">
+
           <h3 class="font-serif text-2xl sm:text-3xl text-slate-900 font-bold tracking-wider mb-2">為自己報名</h3>
+
           <p class="font-serif text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+
             本活動全程免費。<br class="hidden sm:inline">
+
             為了細心預備每位朋友的信件交換，請一人填寫一份表單。
+
           </p>
+
         </div>
 
+
+
         <!-- 報名表單本體 -->
+
         <form id="registration-form" class="space-y-6" novalidate>
+
           
+
           <!-- 姓名 -->
+
           <div>
+
             <label for="full-name" class="block font-sans text-sm font-medium text-slate-700 mb-1">
+
               姓名 <span class="text-rose-500">*</span>
+
             </label>
+
             <input 
+
               type="text" 
+
               id="full-name" 
+
               name="fullName" 
+
               required 
+
               placeholder="請填寫您的真實姓名" 
+
               class="w-full h-12 px-4 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 transition-all font-sans"
+
             />
+
             <p id="name-error" class="hidden text-xs text-rose-500 mt-1 font-sans">請填寫您的姓名</p>
+
           </div>
+
+
 
           <!-- 手機號碼 -->
+
           <div>
+
             <label for="phone-number" class="block font-sans text-sm font-medium text-slate-700 mb-1">
+
               手機號碼 <span class="text-rose-500">*</span>
+
             </label>
+
             <input 
+
               type="tel" 
+
               id="phone-number" 
+
               name="phoneNumber" 
+
               required 
+
               inputmode="numeric"
+
               placeholder="0912345678" 
+
               class="w-full h-12 px-4 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 transition-all font-sans"
+
             />
+
             <p class="text-xs text-slate-400 mt-1 font-sans">活動當天將以「姓名＋手機末三碼」核對入場</p>
+
             <p id="phone-error" class="hidden text-xs text-rose-500 mt-1 font-sans">請輸入正確的台灣手機號碼格式（如 0912345678）</p>
+
           </div>
+
+
 
           <!-- Email -->
+
           <div>
+
             <label for="email" class="block font-sans text-sm font-medium text-slate-700 mb-1">
+
               電子郵件 (Email) <span class="text-rose-500">*</span>
+
             </label>
+
             <input 
+
               type="email" 
+
               id="email" 
+
               name="email" 
+
               required 
+
               placeholder="yourname@example.com" 
+
               class="w-full h-12 px-4 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 transition-all font-sans"
+
             />
+
             <p id="email-error" class="hidden text-xs text-rose-500 mt-1 font-sans">請輸入有效的 Email 信箱以接收確認信</p>
+
           </div>
+
+
 
           <!-- 如何知道活動資訊 (下拉選單) -->
+
           <div>
+
             <label for="source" class="block font-sans text-sm font-medium text-slate-700 mb-1">
+
               如何知道活動資訊 <span class="text-rose-500">*</span>
+
             </label>
+
             <div class="relative">
+
               <select 
+
                 id="source" 
+
                 name="source" 
+
                 required 
+
                 class="w-full h-12 px-4 rounded-xl border border-stone-300 bg-white focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 transition-all appearance-none font-sans cursor-pointer">
+
                 <option value="" disabled selected>請選擇得知管道</option>
+
                 <option value="社群媒體 (IG、FB、Podcast、LINE)">社群媒體 (IG、FB、Podcast、LINE)</option>
+
                 <option value="親朋好友">親朋好友推薦</option>
+
                 <option value="教會單張">教會單張宣傳</option>
+
                 <option value="其他">其他途徑</option>
+
               </select>
+
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+
               </div>
+
             </div>
+
             <p id="source-error" class="hidden text-xs text-rose-500 mt-1 font-sans">請選擇您如何得知活動資訊</p>
+
           </div>
+
+
 
           <!-- 選填歌曲 (文字直接呈現在輸入框 Placeholder 內) -->
+
           <div>
+
             <div class="flex items-center justify-between mb-1.5">
+
               <label for="comfort-song" class="block font-sans text-base font-medium text-slate-800 tracking-wide">
+
                 一首曾安慰你的歌，或一句歌詞
+
               </label>
+
               <span class="text-xs text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full font-serif">選填</span>
+
             </div>
+
             <textarea 
+
               id="comfort-song" 
+
               name="comfortSong" 
+
               rows="4" 
+
               placeholder="活動當天，我們在現場為大家預備了一個精心設計的小角落。或許曾經接住過你的那段旋律與隻字片語，也能悄悄成為另一個人的安慰；如果你想先留給自己，也可以到現場找你的答案。" 
+
               class="w-full p-4 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 text-sm leading-relaxed transition-all font-serif placeholder:text-slate-400"></textarea>
+
           </div>
+
+
 
           <!-- 必勾選項 (預設為 checked) -->
+
           <div class="space-y-3 pt-2">
+
             <label class="flex items-start gap-3 cursor-pointer group">
+
               <input 
+
                 type="checkbox" 
+
                 id="consent-info" 
+
                 name="consentInfo" 
+
                 checked 
+
                 required 
+
                 class="mt-1 w-4 h-4 text-amber-600 rounded border-stone-300 focus:ring-amber-500 cursor-pointer"
+
               />
+
               <span class="text-xs text-slate-600 leading-relaxed font-sans">
+
                 <span class="text-rose-500 font-bold">*</span> 我同意主辦單位蒐集上述資料，作為報名聯繫、活動通知及現場報到使用；並知悉活動當天將進行錄音與拍照，相關素材可能用於活動紀錄及社群分享。
+
               </span>
+
             </label>
+
             <p id="consent-info-error" class="hidden text-xs text-rose-500 pl-7 font-sans">請勾選同意活動個資與紀錄說明</p>
 
+
+
             <label class="flex items-start gap-3 cursor-pointer group">
+
               <input 
+
                 type="checkbox" 
+
                 id="consent-card" 
+
                 name="consentCard" 
+
                 checked 
+
                 required 
+
                 class="mt-1 w-4 h-4 text-amber-600 rounded border-stone-300 focus:ring-amber-500 cursor-pointer"
+
               />
+
               <span class="text-xs text-slate-600 leading-relaxed font-sans">
+
                 <span class="text-rose-500 font-bold">*</span> 我知道活動當天需要攜帶一張裝在信封裡的安慰卡片。
+
               </span>
+
             </label>
+
             <p id="consent-card-error" class="hidden text-xs text-rose-500 pl-7 font-sans">請確認已知悉當天需攜帶裝在信封裡的安慰卡片</p>
+
           </div>
+
+
 
           <!-- 送出按鈕 -->
+
           <div class="pt-4">
+
             <button 
+
               type="submit" 
+
               id="submit-btn" 
+
               class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-700 to-amber-900 text-white font-serif font-bold text-lg tracking-widest hover:brightness-110 active:scale-[0.99] transition-all shadow-md flex items-center justify-center gap-2">
+
               <span id="btn-text">完成報名</span>
+
               <svg id="loading-spinner" class="hidden animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+
               </svg>
+
             </button>
+
           </div>
+
         </form>
 
+
+
         <!-- 報名成功狀態卡片 (送出後顯示) -->
+
         <div id="success-state" class="hidden py-8 px-4 text-center space-y-6">
+
           <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto text-3xl shadow-inner">
+
             ✓
+
           </div>
+
           
+
           <div>
+
             <h3 class="font-serif text-3xl text-slate-900 font-bold tracking-wider">報名完成</h3>
+
             <p class="font-serif text-slate-600 mt-2 text-base leading-relaxed">
+
               謝謝你為自己，留下一個午後。<br>
+
               <strong class="text-amber-900 font-semibold">11 月 29 日，我們在午後等妳/你。</strong>
+
             </p>
+
             <p class="text-xs text-slate-500 mt-2 font-sans">
+
               當天請記得帶來一張裝在信封裡的安慰卡片，並以「報名姓名＋手機號碼末三碼」完成報到。
+
             </p>
+
           </div>
+
+
 
           <!-- 自動確認信說明與重要排查提示 -->
+
           <div class="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-6 text-left space-y-4 max-w-lg mx-auto">
+
             <div class="flex items-center gap-2 text-amber-900 font-serif font-bold text-sm">
+
               <span>✉️</span>
+
               <span>報名確認信已寄發至：<span id="submitted-email-display" class="font-mono underline text-slate-900"></span></span>
+
             </div>
 
+
+
             <p class="text-xs text-slate-600 leading-relaxed font-sans">
+
               若幾分鐘內未在收件匣收到信件，請務必先檢查<strong>垃圾郵件匣</strong>或<strong>促銷內容分頁</strong>；若確認皆無收到，代表信箱拼字可能有誤，請再麻煩重新報名～
+
             </p>
+
+
 
             <hr class="border-amber-200/50 my-2">
 
+
+
             <!-- 三大溫馨提醒 -->
+
             <div class="space-y-3 text-xs text-slate-700 font-sans">
+
               <!-- 1. 加入日曆 -->
+
               <div class="flex items-start justify-between gap-2">
+
                 <div>
+
                   <p class="font-semibold text-slate-900">1. 將活動排入行事曆</p>
+
                   <p class="text-slate-500 text-[11px]">保留午後時光，避免遺漏重要行程</p>
+
                 </div>
+
                 <a 
+
                   id="google-cal-btn" 
+
                   href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E7%AC%AC%E4%B8%83%E5%B1%86%E7%99%82%E7%99%92%E4%B9%8B%E5%A4%9C%EF%BC%9A%E7%9C%BC%E6%BD%97%E8%AE%8A%E7%8F%8D%E7%8F%A0&dates=20261129T080000Z/20261129T100000Z&details=%E6%89%8D%E7%99%BC%E7%8F%BE%EF%BC%8C%E6%AF%8F%E5%A0%B4%E5%A4%A7%E9%9B%A8%E9%83%BD%E6%B2%92%E6%9C%89%E7%99%BD%E7%99%BD%E8%90%BD%E4%B8%8B%E3%80%82%0A%E6%99%82%E9%96%93%EF%BC%9A16:00%E2%80%9318:00%EF%BC%8815:30%E5%85%A5%E5%A0%B4%EF%BC%89%0A%E5%9C%B0%E9%BB%9E%EF%BC%9A%E5%8F%B0%E5%8C%97%E7%9C%9F%E7%90%86%E5%A0%822%E6%A8%93%E5%A4%A7%E6%9C%83%E5%A0%82%0A%E9%87%8D%E8%A6%81%E6%8F%90%E9%86%92%EF%BC%9A%E8%AB%8B%E5%B8%B6%E4%BE%86%E4%B8%80%E5%BC%B5%E8%A3%9D%E5%9C%A8%E4%BF%A1%E5%B0%81%E8%A3%A1%E7%9A%84%E5%AE%89%E6%85%B0%E5%8D%A1%E7%89%87%E3%80%82&location=%E5%8F%B0%E5%8C%97%E7%9C%9F%E7%90%86%E5%A0%82%202%20%E6%A8%93%E5%A4%A7%E6%9C%83%E5%A0%82%EF%BC%88%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%AE%89%E5%8D%80%E6%96%B0%E7%94%9F%E5%8D%97%E8%B7%AF%E4%B8%89%E6%AE%B5%2086%20%E8%99%9F%EF%BC%89" 
+
                   target="_blank" 
+
                   class="shrink-0 px-3 py-1.5 rounded-lg bg-amber-800 text-white hover:bg-amber-900 transition-colors font-medium text-xs">
+
                   加入日曆
+
                 </a>
+
               </div>
+
+
 
               <!-- 2. 卡片提醒 -->
+
               <div>
+
                 <p class="font-semibold text-slate-900">2. 準備信封裡的安慰卡片</p>
+
                 <p class="text-slate-500 text-[11px] leading-relaxed">活動前一週、前三天，我們都會再發送提醒信給您！</p>
+
               </div>
+
+
 
               <!-- 3. LINE 官方客服 -->
+
               <div>
+
                 <p class="font-semibold text-slate-900">3. 有任何疑問嗎？</p>
+
                 <p class="text-slate-500 text-[11px]">
+
                   歡迎隨時至 LINE 官方帳號詢問：
+
                   <a href="https://lin.ee/oLYha9N" target="_blank" class="text-emerald-700 underline font-bold">肥牡蠣的大小事 (點擊加入)</a>
+
                 </p>
+
               </div>
+
             </div>
+
           </div>
+
+
 
           <!-- 重新填寫按鈕 (為親友報名，保持預設勾選) -->
+
           <div class="pt-4">
+
             <button 
+
               id="reset-form-btn" 
+
               class="px-6 py-2.5 rounded-full border border-stone-300 text-slate-600 hover:bg-stone-100 transition-colors text-xs font-sans">
+
               替同行親友填寫報名
+
             </button>
+
           </div>
+
         </div>
 
+
+
       </div>
+
     </div>
+
   </section>
 
+
+
   <footer class="bg-night-950 text-slate-400 py-12 px-6 border-t border-white/5 font-serif text-center relative z-20">
+
     <div class="max-w-4xl mx-auto space-y-4">
+
       <h4 class="text-pearl-200 tracking-widest text-base sm:text-lg font-bold">第七屆療癒之夜｜眼淚變珍珠</h4>
+
       <p class="text-xs text-slate-500 tracking-wider">
+
         主辦單位：愛盟家庭文教基金會、肥牡蠣的大小事
+
       </p>
+
       <p class="text-[11px] text-slate-600 font-sans tracking-widest pt-4">
+
         © 2026 7th Healing Night. All Rights Reserved.
+
       </p>
+
     </div>
+
   </footer>
 
+
+
   <!-- 手機版底部常駐立即報名按鈕 -->
+
   <div id="mobile-sticky-btn" class="sm:hidden fixed bottom-5 left-4 right-4 z-40 transition-all duration-300">
+
     <a 
+
       href="#register" 
+
       class="w-full block py-3.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 text-night-950 font-serif font-bold text-center tracking-widest shadow-pearl-float active:scale-95">
+
       立即報名
+
     </a>
+
   </div>
 
+
+
   <!-- 載入 Instagram 官方嵌入腳本並自動處理重繪 -->
+
   <script>
+
     function loadInstagramEmbed() {
+
       if (window.instgrm) {
+
         window.instgrm.Embeds.process();
+
         return;
+
       }
+
       const script = document.createElement('script');
+
       script.async = true;
+
       script.defer = true;
+
       script.src = "https://www.instagram.com/embed.js";
+
       script.onload = function() {
+
         if (window.instgrm) {
+
           window.instgrm.Embeds.process();
+
         }
+
       };
+
       document.body.appendChild(script);
+
     }
+
   </script>
 
+
+
   <script>
+
     // 1. 活動倒數計時器 (目標：2026 年 11 月 29 日 16:00 台北時間 UTC+8)
+
     function initCountdown() {
+
       const targetDate = new Date('2026-11-29T16:00:00+08:00').getTime();
 
+
+
       function updateTimer() {
+
         const now = new Date().getTime();
+
         const difference = targetDate - now;
 
+
+
         if (difference <= 0) {
+
           document.getElementById('countdown-days').textContent = '00';
+
           document.getElementById('countdown-hours').textContent = '00';
+
           document.getElementById('countdown-minutes').textContent = '00';
+
           document.getElementById('countdown-seconds').textContent = '00';
+
           return;
+
         }
 
+
+
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
+
+
         document.getElementById('countdown-days').textContent = String(days).padStart(2, '0');
+
         document.getElementById('countdown-hours').textContent = String(hours).padStart(2, '0');
+
         document.getElementById('countdown-minutes').textContent = String(minutes).padStart(2, '0');
+
         document.getElementById('countdown-seconds').textContent = String(seconds).padStart(2, '0');
+
       }
 
+
+
       updateTimer();
+
       setInterval(updateTimer, 1000);
+
     }
 
+
+
     // 2. 講者卡片互動（電腦版純懸停 Hover 翻轉，手機版點擊切換與點擊空白處自動翻回）
+
     function toggleCard(event, cardElement) {
+
       // 若是電腦版滑鼠環境，hover 已自動處理翻轉，無需觸控點擊
+
       const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
       if (!isTouchDevice) return;
+
+
 
       if (event) event.stopPropagation();
 
+
+
       const isCurrentlyFlipped = cardElement.classList.contains('is-flipped');
 
+
+
       // 將其他所有卡片翻回正面照片
+
       document.querySelectorAll('.flip-card').forEach(c => {
+
         c.classList.remove('is-flipped');
+
         c.setAttribute('aria-pressed', 'false');
+
       });
 
+
+
       // 若目前未翻開，則翻至背面主題
+
       if (!isCurrentlyFlipped) {
+
         cardElement.classList.add('is-flipped');
+
         cardElement.setAttribute('aria-pressed', 'true');
+
       }
+
     }
+
+
 
     function handleCardKey(event, cardElement) {
+
       if (event.key === 'Enter' || event.key === ' ') {
+
         event.preventDefault();
+
         const isCurrentlyFlipped = cardElement.classList.contains('is-flipped');
+
         cardElement.classList.toggle('is-flipped', !isCurrentlyFlipped);
+
         cardElement.setAttribute('aria-pressed', (!isCurrentlyFlipped).toString());
+
       }
+
     }
+
+
 
     // 手機版：點擊卡片以外的任何空白區域，自動全部翻回正面照片
+
     document.addEventListener('click', (e) => {
+
       if (!e.target.closest('.flip-card')) {
+
         document.querySelectorAll('.flip-card').forEach(c => {
+
           c.classList.remove('is-flipped');
+
           c.setAttribute('aria-pressed', 'false');
+
         });
+
       }
+
     });
 
+
+
     // 3. 手機版浮動按鈕在表單區域時自動淡出隱藏
+
     function initStickyButtonObserver() {
+
       const stickyBtn = document.getElementById('mobile-sticky-btn');
+
       const registerSection = document.getElementById('register');
+
       if (!stickyBtn || !registerSection) return;
 
+
+
       const observer = new IntersectionObserver((entries) => {
+
         entries.forEach(entry => {
+
           if (entry.isIntersecting) {
+
             stickyBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+
           } else {
+
             stickyBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+
           }
+
         });
+
       }, { threshold: 0.15 });
 
+
+
       observer.observe(registerSection);
+
     }
 
+
+
     // 4. 表單驗證與 Google Apps Script 串接送出處理
+
     function initFormValidation() {
+
       // 官方 Apps Script Web App URL
+
       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8n3nbasutSsO7Dic4wOUra4ZMr_ky3bZDdP44LblFMD-PcCuP-OOe37apqEVQg-o37A/exec';
 
+
+
       const form = document.getElementById('registration-form');
+
       const submitBtn = document.getElementById('submit-btn');
+
       const btnText = document.getElementById('btn-text');
+
       const loadingSpinner = document.getElementById('loading-spinner');
+
       const successState = document.getElementById('success-state');
+
       const submittedEmailDisplay = document.getElementById('submitted-email-display');
+
       const resetFormBtn = document.getElementById('reset-form-btn');
 
+
+
       // 欄位 DOM
+
       const fullName = document.getElementById('full-name');
+
       const phoneNumber = document.getElementById('phone-number');
+
       const email = document.getElementById('email');
+
       const source = document.getElementById('source');
+
       const comfortSong = document.getElementById('comfort-song');
+
       const consentInfo = document.getElementById('consent-info');
+
       const consentCard = document.getElementById('consent-card');
 
+
+
       // 錯誤訊息 DOM
+
       const nameError = document.getElementById('name-error');
+
       const phoneError = document.getElementById('phone-error');
+
       const emailError = document.getElementById('email-error');
+
       const sourceError = document.getElementById('source-error');
+
       const consentInfoError = document.getElementById('consent-info-error');
+
       const consentCardError = document.getElementById('consent-card-error');
 
+
+
       form.addEventListener('submit', function(e) {
+
         e.preventDefault();
+
         let isValid = true;
 
+
+
         // 姓名驗證
+
         if (!fullName.value.trim()) {
+
           nameError.classList.remove('hidden');
+
           fullName.classList.add('border-rose-500');
+
           isValid = false;
+
         } else {
+
           nameError.classList.add('hidden');
+
           fullName.classList.remove('border-rose-500');
+
         }
+
+
 
         // 手機驗證
+
         const phoneClean = phoneNumber.value.trim().replace(/[-\s]/g, '');
+
         const phoneRegex = /^09\d{8}$/;
+
         if (!phoneRegex.test(phoneClean)) {
+
           phoneError.classList.remove('hidden');
+
           phoneNumber.classList.add('border-rose-500');
+
           isValid = false;
+
         } else {
+
           phoneError.classList.add('hidden');
+
           phoneNumber.classList.remove('border-rose-500');
+
         }
+
+
 
         // Email 驗證
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!emailRegex.test(email.value.trim())) {
+
           emailError.classList.remove('hidden');
+
           email.classList.add('border-rose-500');
+
           isValid = false;
+
         } else {
+
           emailError.classList.add('hidden');
+
           email.classList.remove('border-rose-500');
+
         }
+
+
 
         // 來源選擇驗證
+
         if (!source.value) {
+
           sourceError.classList.remove('hidden');
+
           source.classList.add('border-rose-500');
+
           isValid = false;
+
         } else {
+
           sourceError.classList.add('hidden');
+
           source.classList.remove('border-rose-500');
+
         }
+
+
 
         // 必選勾選驗證
+
         if (!consentInfo.checked) {
+
           consentInfoError.classList.remove('hidden');
+
           isValid = false;
+
         } else {
+
           consentInfoError.classList.add('hidden');
+
         }
 
+
+
         if (!consentCard.checked) {
+
           consentCardError.classList.remove('hidden');
+
           isValid = false;
+
         } else {
+
           consentCardError.classList.add('hidden');
+
         }
+
+
 
         if (!isValid) return;
 
+
+
         // 進入送出處理狀態 (防連點)
+
         submitBtn.disabled = true;
+
         btnText.textContent = '報名處理中...';
+
         loadingSpinner.classList.remove('hidden');
 
+
+
         const userEnteredName = fullName.value.trim();
+
         const userEnteredEmail = email.value.trim();
 
+
+
         // 封裝要傳送至 Google 試算表的資料 (包含兩個勾選狀態)
+
         const payload = {
+
           fullName: userEnteredName,
+
           phoneNumber: phoneClean,
+
           email: userEnteredEmail,
+
           source: source.value,
+
           comfortSong: comfortSong.value.trim(),
+
           consentInfo: consentInfo.checked,
+
           consentCard: consentCard.checked
+
         };
 
+
+
         // 發送至 Google Apps Script 後端
+
         fetch(GOOGLE_SCRIPT_URL, {
+
           method: 'POST',
+
           mode: 'no-cors', // 避免跨網域 CORS 阻擋
+
           headers: {
+
             'Content-Type': 'application/json'
+
           },
+
           body: JSON.stringify(payload)
+
         })
+
         .then(() => {
+
           // 成功切換畫面
+
           if (submittedEmailDisplay) submittedEmailDisplay.textContent = userEnteredEmail;
+
           form.classList.add('hidden');
+
           successState.classList.remove('hidden');
+
           successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         })
+
         .catch((err) => {
+
           console.error('送出失敗：', err);
+
           alert('連線稍微不穩定，請再點擊一次送出～');
+
         })
+
         .finally(() => {
+
           submitBtn.disabled = false;
+
           btnText.textContent = '完成報名';
+
           loadingSpinner.classList.add('hidden');
+
         });
+
       });
 
+
+
       // 重新填寫按鈕邏輯
+
       if (resetFormBtn) {
+
         resetFormBtn.addEventListener('click', () => {
+
           form.reset();
+
           consentInfo.checked = true;
+
           consentCard.checked = true;
+
           successState.classList.add('hidden');
+
           form.classList.remove('hidden');
+
           form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         });
+
       }
+
     }
 
+
+
     // 頁面加載後啟動所有模組
+
     window.addEventListener('DOMContentLoaded', () => {
+
       initCountdown();
+
       initStickyButtonObserver();
+
       initFormValidation();
+
       loadInstagramEmbed();
+
     });
+
   </script>
+
 </body>
+
 </html>
