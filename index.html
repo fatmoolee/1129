@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>第七屆療癒之夜｜眼淚變珍珠 — 官方活動報名</title>
   
-  <!-- Google Fonts: 經典宋體 Noto Serif TC、襯線標題 Cinzel 與 Cormorant Garamond -->
+  <!-- Google Fonts: 日系文藝 Shippori Mincho 明朝體、輕量思源明體 (300/400) 與法式襯線 Cormorant Garamond / Cinzel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+TC:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,10 +18,10 @@
       theme: {
         extend: {
           fontFamily: {
-            serif: ['"Noto Serif TC"', 'Georgia', 'serif'],
-            display: ['Cinzel', '"Noto Serif TC"', 'serif'],
-            quote: ['"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Shippori Mincho"', '"Noto Serif TC"', '"Songti TC"', '"LiSong Pro"', '"Source Han Serif TC"', 'serif'],
+            display: ['Cinzel', '"Shippori Mincho"', '"Noto Serif TC"', 'serif'],
+            quote: ['"Cormorant Garamond"', '"Shippori Mincho"', '"Noto Serif TC"', 'serif'],
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"PingFang TC"', '"Noto Sans TC"', 'sans-serif'],
           },
           colors: {
             night: {
@@ -58,35 +58,36 @@
   </script>
 
   <style>
-    /* 全站基礎抗鋸齒與平滑選擇 */
+    /* 全站日系明朝體與呼吸感設定 */
     body {
       background-color: #070a12;
       color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Serif TC", "Heiti TC", sans-serif;
+      font-family: "Shippori Mincho", "Noto Serif TC", "Songti TC", "LiSong Pro", Georgia, serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "palt" 1;
+      text-rendering: optimizeLegibility;
     }
 
-    /* 紙張噪點質感層 (CSS 純代碼生成) */
+    /* 紙張噪點質感 */
     .bg-grain {
       background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
       background-size: 24px 24px;
     }
 
-    /* 淺色羊皮紙質感 */
     .bg-paper-grain {
       background-color: #FAF7F2;
       background-image: radial-gradient(rgba(60, 50, 40, 0.04) 1px, transparent 0);
       background-size: 20px 20px;
     }
 
-    /* 首頁主視覺雙向自然羽化漸層 */
+    /* 首頁主視覺漸層 */
     .hero-mask-overlay {
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.82) 0%, rgba(11, 18, 32, 0.7) 45%, rgba(7, 10, 18, 0.96) 100%);
     }
 
-    /* 講員 3D 翻轉卡片容器：徹底修復 iOS Safari 背面透出反字問題 */
+    /* 講員 3D 翻轉卡片容器 */
     .flip-card {
       perspective: 1200px;
       -webkit-perspective: 1200px;
@@ -100,7 +101,7 @@
       -webkit-transform-style: preserve-3d;
     }
 
-    /* 電腦版：滑鼠移入自動翻轉呈現分享主題，移出自動翻回照片 */
+    /* 電腦版 Hover 自動翻轉 */
     @media (hover: hover) and (pointer: fine) {
       .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
@@ -108,7 +109,7 @@
       }
     }
 
-    /* 手機版或點擊觸發翻轉 */
+    /* 手機版點擊翻轉 */
     .flip-card.is-flipped .flip-card-inner {
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
@@ -124,10 +125,11 @@
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
     }
+    /* 背面實心底色，防止正面照片文字鏡像透出 */
     .flip-card-back {
       transform: rotateY(180deg) translateZ(1px);
       -webkit-transform: rotateY(180deg) translateZ(1px);
-      background-color: #0d1424 !important; /* 實心深色背景，阻擋正面透字 */
+      background-color: #0d1424 !important;
     }
 
     /* 珍珠呼吸微光動態 */
@@ -139,7 +141,6 @@
       animation: pearlPulse 4.5s ease-in-out infinite;
     }
 
-    /* 減緩動畫設定 (無障礙) */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
         animation-duration: 0.01ms !important;
@@ -155,7 +156,7 @@
 
   <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-night-950/80 border-b border-white/5 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
-      <!-- 品牌與活動名稱 -->
+      <!-- 品牌名稱（強制不換行） -->
       <a href="#" class="flex items-center gap-2 group shrink-0">
         <span class="w-2.5 h-2.5 rounded-full bg-gold-400 shadow-[0_0_10px_#d4af37]"></span>
         <span class="font-serif tracking-widest text-sm sm:text-base text-pearl-100 group-hover:text-gold-400 transition-colors whitespace-nowrap">
@@ -163,7 +164,7 @@
         </span>
       </a>
 
-      <!-- 導航連結 -->
+      <!-- 導航連結（強制不換行） -->
       <nav class="flex items-center gap-2.5 sm:gap-6 text-xs sm:text-sm shrink-0">
         <a href="#speakers" class="text-slate-300 hover:text-gold-400 transition-colors font-serif tracking-wider whitespace-nowrap px-1">
           走進故事
@@ -176,72 +177,68 @@
   </header>
 
   <section class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden bg-night-950">
-    <!-- 主視覺整合背景：雙向羽化融入夜空 -->
+    <!-- 主視覺整合背景 -->
     <div class="absolute inset-0 z-0">
       <img 
         src="https://i.postimg.cc/Gm82ZqFV/yan-lei-bian-zhen-zhu-zhu-shi-jue1-(2).png" 
         alt="第七屆療癒之夜：眼淚變珍珠 主視覺" 
         class="w-full h-full object-cover object-center opacity-65 md:opacity-75 scale-105 filter brightness-95"
       />
-      <!-- 柔和暈染漸層疊層 -->
       <div class="absolute inset-0 hero-mask-overlay"></div>
       <div class="absolute inset-0 bg-grain"></div>
     </div>
 
-    <!-- 首頁文字內容與倒數計時器 -->
+    <!-- 首頁文字內容 -->
     <div class="relative z-10 max-w-4xl mx-auto text-center px-4 py-8">
-      <!-- 單一沉穩標籤 -->
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
         <span class="w-2 h-2 rounded-full bg-gold-400 animate-pearl-pulse"></span>
         <span class="text-xs tracking-[0.25em] text-pearl-200 font-serif whitespace-nowrap">第七屆療癒之夜</span>
       </div>
 
-      <!-- 活動主標題 -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-[0.15em] text-pearl-50 mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-light tracking-[0.2em] text-pearl-50 mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
         眼淚變珍珠
       </h1>
 
-      <!-- 指定斷行之詩意副標 -->
-      <p class="font-serif text-lg sm:text-2xl text-slate-200 font-light leading-relaxed tracking-wider mb-8 drop-shadow-md">
+      <p class="font-serif text-base sm:text-xl text-slate-200 font-light leading-relaxed tracking-widest mb-8 drop-shadow-md">
         才發現，<br>
         每場大雨都沒有白白落下。
       </p>
 
       <!-- 活動基本資訊條 -->
-      <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-4 sm:gap-x-5 text-sm sm:text-base text-slate-300 font-serif tracking-widest mb-10">
-        <span class="text-gold-400 font-semibold whitespace-nowrap">2026.11.29 SUN</span>
+      <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-4 sm:gap-x-5 text-xs sm:text-sm text-slate-300 font-serif tracking-widest mb-10">
+        <span class="text-gold-400 font-normal whitespace-nowrap">2026.11.29 SUN</span>
         <span class="text-white/30 hidden sm:inline">|</span>
-        <span class="whitespace-nowrap">16:00–18:00</span>
+        <span class="whitespace-nowrap font-light">16:00–18:00</span>
         <span class="text-white/30 hidden sm:inline">|</span>
-        <span class="whitespace-nowrap">台北真理堂 2 樓大會堂</span>
+        <span class="whitespace-nowrap font-light">台北真理堂 2 樓大會堂</span>
         <span class="text-white/30 hidden sm:inline">|</span>
-        <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-xs border border-gold-400/30 whitespace-nowrap">免費活動</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-[11px] border border-gold-400/30 whitespace-nowrap">免費活動</span>
       </div>
 
       <!-- 典雅極簡倒數計時器 -->
       <div class="max-w-xl mx-auto mb-12 p-6 rounded-2xl bg-night-950/60 backdrop-blur-md border border-gold-400/25 shadow-pearl-subtle">
-        <p class="text-xs uppercase tracking-[0.3em] text-gold-400/80 mb-4 font-display">Time Until Gathering</p>
+        <p class="text-[11px] uppercase tracking-[0.3em] text-gold-400/80 mb-4 font-display">Time Until Gathering</p>
         <div class="grid grid-cols-4 gap-3 text-center">
           <div class="flex flex-col items-center">
-            <span id="countdown-days" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
-            <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">天</span>
+            <span id="countdown-days" class="text-2xl sm:text-3xl font-quote font-light text-pearl-50">--</span>
+            <span class="text-[10px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">天</span>
           </div>
           <div class="flex flex-col items-center border-l border-white/10">
-            <span id="countdown-hours" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
-            <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">時</span>
+            <span id="countdown-hours" class="text-2xl sm:text-3xl font-quote font-light text-pearl-50">--</span>
+            <span class="text-[10px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">時</span>
           </div>
           <div class="flex flex-col items-center border-l border-white/10">
-            <span id="countdown-minutes" class="text-3xl sm:text-4xl font-display font-semibold text-pearl-50">--</span>
-            <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">分</span>
+            <span id="countdown-minutes" class="text-2xl sm:text-3xl font-quote font-light text-pearl-50">--</span>
+            <span class="text-[10px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">分</span>
           </div>
           <div class="flex flex-col items-center border-l border-white/10">
-            <span id="countdown-seconds" class="text-3xl sm:text-4xl font-display font-semibold text-gold-400">--</span>
-            <span class="text-[11px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">秒</span>
+            <span id="countdown-seconds" class="text-2xl sm:text-3xl font-quote font-light text-gold-400">--</span>
+            <span class="text-[10px] sm:text-xs text-slate-400 tracking-widest mt-1 font-serif">秒</span>
           </div>
         </div>
       </div>
 
-      <!-- 首頁引導按鈕 -->
+      <!-- 首頁行動按鈕 -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#register" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 text-night-950 font-serif font-bold tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-pearl-subtle text-base whitespace-nowrap">
           立即報名
@@ -253,39 +250,46 @@
     </div>
   </section>
 
-  <section class="relative py-20 px-6 bg-night-900 border-t border-white/5 overflow-hidden">
-    <div class="max-w-3xl mx-auto text-center relative z-10">
+  <section class="relative py-20 px-4 sm:px-6 bg-night-900 border-t border-white/5 overflow-hidden">
+    <div class="max-w-2xl mx-auto text-center relative z-10">
       <div class="w-10 h-0.5 bg-gold-400/40 mx-auto mb-10"></div>
-      <p class="font-serif text-lg sm:text-2xl text-slate-300 font-light leading-loose tracking-wider space-y-3">
-        <span>有些日子，我們以為自己只是失去了。</span><br>
-        <span>後來才明白，那些曾經接住我們的歌、故事與話語，</span><br>
-        <span>也可能在另一場大雨裡，成為某個人的<span class="text-gold-400 font-normal">珍珠</span>。</span>
-      </p>
+      
+      <!-- 徹底修復斷行：使用精確段落與 inline-block 語意鎖定，絕不隨機換行 -->
+      <div class="font-serif text-sm sm:text-lg md:text-xl text-slate-300 font-light leading-relaxed tracking-widest space-y-6">
+        <p>
+          <span class="inline-block">有些日子，</span><span class="inline-block">我們以為自己只是失去了。</span>
+        </p>
+        <p>
+          <span class="inline-block">後來才明白，</span><br class="sm:hidden">
+          <span class="inline-block">那些曾經接住我們的歌、</span><span class="inline-block">故事與話語，</span>
+        </p>
+        <p>
+          <span class="inline-block">也可能在另一場大雨裡，</span><br class="sm:hidden">
+          <span class="inline-block">成為某個人的<span class="text-gold-400 font-normal">珍珠</span>。</span>
+        </p>
+      </div>
+
       <div class="w-10 h-0.5 bg-gold-400/40 mx-auto mt-10"></div>
     </div>
   </section>
 
   <section id="speakers" class="py-16 px-4 sm:px-6 bg-night-950 relative overflow-hidden">
-    <!-- 珍珠柔和光暈背景 -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-400/5 rounded-full blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-6xl mx-auto relative z-10">
-      <!-- 區塊標題與指定斷行文字 -->
       <div class="text-center max-w-xl mx-auto mb-12">
         <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-display">GUEST SPEAKERS</span>
-        <p class="font-serif text-base sm:text-lg text-slate-300 mt-4 leading-relaxed tracking-wider">
-          關於沒有如願的愛、突如其來的失去，<br>
-          以及努力讓自己看起來很好的疲憊。
+        <p class="font-serif text-sm sm:text-base text-slate-300 mt-4 leading-relaxed tracking-wider">
+          <span class="inline-block">關於沒有如願的愛、</span><span class="inline-block">突如其來的失去，</span><br>
+          <span class="inline-block">以及努力讓自己看起來很好的疲憊。</span>
         </p>
       </div>
 
-      <!-- 三張獨立翻牌卡片 -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- 卡片 1：蔣瑀 Sarah (水平翻轉 scale-x-[-1]) -->
+        <!-- 卡片 1：蔣瑀 Sarah -->
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="蔣瑀 分享卡片">
           <div class="flip-card-inner shadow-2xl">
-            <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/sgqR8Vxw/IMG-6574.jpg" 
@@ -299,8 +303,7 @@
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">5.5 萬人追蹤｜@weakcan 創作者</p>
               </div>
             </div>
-            <!-- 背面 -->
-            <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#1a1426] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+            <div class="flip-card-back bg-[#0d1424] border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">01</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">當愛沒有如願</h4>
@@ -315,7 +318,6 @@
         <!-- 卡片 2：馬箏 Katrina (上提、調亮且人物比例對齊) -->
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="馬箏 分享卡片">
           <div class="flip-card-inner shadow-2xl">
-            <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/rFY6081k/S-80027672-0.jpg" 
@@ -329,8 +331,7 @@
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">金鐘入圍主持人、創作歌手</p>
               </div>
             </div>
-            <!-- 背面 -->
-            <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#19152b] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+            <div class="flip-card-back bg-[#0d1424] border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">02</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">在失去以後</h4>
@@ -345,7 +346,6 @@
         <!-- 卡片 3：品恩 William -->
         <div class="flip-card h-[460px] cursor-pointer group" onclick="toggleCard(event, this)" onkeydown="handleCardKey(event, this)" tabindex="0" role="button" aria-pressed="false" aria-label="品恩 分享卡片">
           <div class="flip-card-inner shadow-2xl">
-            <!-- 正面 -->
             <div class="flip-card-front bg-night-850 border border-white/10 overflow-hidden flex flex-col justify-end">
               <img 
                 src="https://i.postimg.cc/1tRMrFSK/ES-672.jpg" 
@@ -359,8 +359,7 @@
                 <p class="text-xs text-gold-400/90 font-serif tracking-widest">療癒系歌唱老師</p>
               </div>
             </div>
-            <!-- 背面 -->
-            <div class="flip-card-back bg-gradient-to-br from-night-850 via-[#171424] to-night-950 border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+            <div class="flip-card-back bg-[#0d1424] border border-gold-400/30 p-8 flex flex-col justify-between text-center relative overflow-hidden">
               <div class="w-8 h-8 rounded-full border border-gold-400/30 flex items-center justify-center mx-auto text-gold-400 text-xs font-serif mt-4">03</div>
               <div class="my-auto space-y-4">
                 <h4 class="font-serif text-2xl text-pearl-100 font-bold tracking-widest">看起來很好</h4>
@@ -383,7 +382,6 @@
         走過那場雨的夜晚
       </h2>
 
-      <!-- Instagram 嵌入容器 -->
       <div class="flex justify-center w-full min-h-[460px] sm:min-h-[580px] items-center">
         <div class="w-full max-w-[420px] mx-auto overflow-hidden rounded-2xl shadow-2xl border border-white/10 bg-night-950/80 p-1">
           <blockquote 
@@ -414,14 +412,22 @@
           一封信，交換一顆珍珠<br>
           <span class="text-base sm:text-xl font-light text-slate-300 mt-1 inline-block">給一個正在大雨中的人</span>
         </h2>
-        <div class="font-serif text-xs sm:text-sm text-slate-300 mt-5 leading-relaxed space-y-1.5 px-2">
-          <p>每位參加者，請帶來一張裝進信封裡的安慰卡片。</p>
-          <p>你不會知道收到它的人是誰，</p>
-          <p>只要想像：此刻，有一個人正需要一點溫柔的陪伴。</p>
+        
+        <!-- 徹底防斷行：陪伴二字不再切開 -->
+        <div class="font-serif text-[13px] sm:text-base text-slate-300 mt-6 leading-relaxed space-y-3 px-2">
+          <p>
+            <span class="inline-block">每位參加者，</span><span class="inline-block">請帶來一張裝進信封裡的安慰卡片。</span>
+          </p>
+          <p>
+            <span class="inline-block">你不會知道收到它的人是誰，</span>
+          </p>
+          <p>
+            <span class="inline-block">只要想像：此刻，</span><span class="inline-block">有一個人正需要<span class="text-pearl-100 font-normal">一點溫柔的陪伴。</span></span>
+          </p>
         </div>
       </div>
 
-      <!-- 三個步驟垂直導覽：字級縮小、優化手機排版避免落單斷字 -->
+      <!-- 三步驟垂直導覽 -->
       <div class="relative border-l border-gold-400/25 ml-2 sm:ml-28 space-y-10 pb-2">
         <!-- 步驟一 -->
         <div class="relative pl-6 sm:pl-10">
@@ -430,7 +436,7 @@
           </div>
           <h3 class="font-serif text-base sm:text-xl text-pearl-100 font-bold tracking-wider mb-1.5">想像一個需要被安慰的人</h3>
           <p class="font-serif text-slate-400 text-xs sm:text-sm leading-relaxed">
-            寫下一封他此刻需要收到的信。一句曾接住你的歌詞、一句話，或一段安靜的問候。
+            <span class="inline-block">寫下一封他此刻需要收到的信。</span><span class="inline-block">一句曾接住你的歌詞、一句話，</span><span class="inline-block">或一段安靜的問候。</span>
           </p>
         </div>
 
@@ -441,8 +447,8 @@
           </div>
           <h3 class="font-serif text-base sm:text-xl text-pearl-100 font-bold tracking-wider mb-1.5">裝進信封帶來</h3>
           <p class="font-serif text-slate-400 text-xs sm:text-sm leading-relaxed">
-            卡片可以署名，也可以匿名。<br>
-            <span class="text-gold-400/90 font-medium">請注意：信封外請不要寫收件人。</span>
+            <span class="inline-block">卡片可以署名，也可以匿名。</span><br>
+            <span class="text-gold-400/90 font-medium inline-block">請注意：信封外請不要寫收件人。</span>
           </p>
         </div>
 
@@ -453,8 +459,8 @@
           </div>
           <h3 class="font-serif text-base sm:text-xl text-pearl-100 font-bold tracking-wider mb-1.5">帶走另一顆珍珠</h3>
           <p class="font-serif text-slate-400 text-xs sm:text-sm leading-relaxed">
-            活動尾聲，你也會在安靜的樂音中，<br class="hidden sm:inline">
-            收到另一位參加者留在現場的信。
+            <span class="inline-block">活動尾聲，你也會在安靜的樂音中，</span><br class="hidden sm:inline">
+            <span class="inline-block">收到另一位參加者留在現場的信。</span>
           </p>
         </div>
       </div>
@@ -472,37 +478,39 @@
         </h2>
         <div class="w-12 h-0.5 bg-amber-700/40 mx-auto mt-4 mb-8"></div>
 
-        <!-- 詳細條目資訊 -->
-        <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4 text-left font-serif">
-          <div class="flex items-start gap-3">
-            <span class="font-bold text-amber-900 shrink-0">日期｜</span>
-            <span>2026 年 11 月 29 日（日）</span>
+        <!-- 詳細條目資訊：全面鎖定不換行，解決 (日)、入場)、滿為止) 掉落問題 -->
+        <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4 text-left font-serif text-sm sm:text-base">
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-amber-900 shrink-0 whitespace-nowrap">日期｜</span>
+            <span class="whitespace-nowrap font-medium text-slate-900">2026.11.29 (日)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-amber-900 shrink-0 whitespace-nowrap">時間｜</span>
+            <span class="whitespace-nowrap font-medium text-slate-900">16:00–18:00（15:30 開放入場）</span>
           </div>
           <div class="flex items-start gap-3">
-            <span class="font-bold text-amber-900 shrink-0">時間｜</span>
-            <span>16:00–18:00（15:30 開放入場）</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="font-bold text-amber-900 shrink-0">地點｜</span>
+            <span class="font-bold text-amber-900 shrink-0 whitespace-nowrap mt-0.5">地點｜</span>
             <div>
-              <p class="font-semibold text-slate-900">台北真理堂 2 樓大會堂</p>
-              <p class="text-xs text-slate-500 mt-0.5">台北市大安區新生南路三段 86 號</p>
+              <p class="font-semibold text-slate-900 whitespace-nowrap">台北真理堂 2 樓大會堂</p>
+              <p class="text-xs text-slate-500 mt-0.5 whitespace-nowrap">台北市大安區新生南路三段 86 號</p>
             </div>
           </div>
-          <div class="flex items-start gap-3">
-            <span class="font-bold text-amber-900 shrink-0">費用｜</span>
-            <span class="text-emerald-700 font-semibold">免費參加（名額有限，額滿為止）</span>
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-amber-900 shrink-0 whitespace-nowrap">費用｜</span>
+            <span class="text-emerald-700 font-semibold whitespace-nowrap">免費參加（名額有限，額滿為止）</span>
           </div>
         </div>
       </div>
 
       <!-- 報名表單區塊 -->
       <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-xl relative overflow-hidden">
+        
+        <!-- 表單標題與副標（已修復「單。」孤兒落單） -->
         <div class="text-center mb-8">
           <h3 class="font-serif text-2xl sm:text-3xl text-slate-900 font-bold tracking-wider mb-2">為自己報名</h3>
-          <p class="font-serif text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-            本活動全程免費。<br class="hidden sm:inline">
-            為了細心預備每位朋友的信件交換，請一人填寫一份表單。
+          <p class="font-serif text-xs sm:text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+            <span class="inline-block">本活動全程免費。</span><br class="sm:hidden">
+            <span class="inline-block">為了細心預備每位朋友的信件交換，</span><span class="inline-block">請一人填寫一份。</span>
           </p>
         </div>
 
@@ -559,7 +567,7 @@
             <p id="email-error" class="hidden text-xs text-rose-500 mt-1 font-sans">請輸入有效的 Email 信箱以接收確認信</p>
           </div>
 
-          <!-- 如何知道活動資訊 (下拉選單) -->
+          <!-- 如何知道活動資訊 (下拉選單，包含完整社群管道) -->
           <div>
             <label for="source" class="block font-sans text-sm font-medium text-slate-700 mb-1">
               如何知道活動資訊 <span class="text-rose-500">*</span>
@@ -586,7 +594,7 @@
           <!-- 選填歌曲 (文字直接呈現在輸入框 Placeholder 內) -->
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label for="comfort-song" class="block font-sans text-base font-medium text-slate-800 tracking-wide">
+              <label for="comfort-song" class="block font-sans text-sm sm:text-base font-medium text-slate-800 tracking-wide">
                 一首曾安慰你的歌，或一句歌詞
               </label>
               <span class="text-xs text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full font-serif">選填</span>
@@ -599,7 +607,7 @@
               class="w-full p-4 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-600/30 focus:border-amber-600 outline-none text-slate-800 text-sm leading-relaxed transition-all font-serif placeholder:text-slate-400"></textarea>
           </div>
 
-          <!-- 必勾選項 (預設為 checked) -->
+          <!-- 必勾選項 -->
           <div class="space-y-3 pt-2">
             <label class="flex items-start gap-3 cursor-pointer group">
               <input 
@@ -647,7 +655,6 @@
           </div>
         </form>
 
-        <!-- 報名成功狀態卡片 (送出後顯示) -->
         <div id="success-state" class="hidden py-8 px-4 text-center space-y-6">
           <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto text-3xl shadow-inner">
             ✓
@@ -664,7 +671,6 @@
             </p>
           </div>
 
-          <!-- 自動確認信說明與重要排查提示 -->
           <div class="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-6 text-left space-y-4 max-w-lg mx-auto">
             <div class="flex items-center gap-2 text-amber-900 font-serif font-bold text-sm">
               <span>✉️</span>
@@ -677,7 +683,6 @@
 
             <hr class="border-amber-200/50 my-2">
 
-            <!-- 三大溫馨提醒 -->
             <div class="space-y-3 text-xs text-slate-700 font-sans">
               <!-- 1. 加入日曆 -->
               <div class="flex items-start justify-between gap-2">
@@ -711,7 +716,7 @@
             </div>
           </div>
 
-          <!-- 重新填寫按鈕 (為親友報名，保持預設勾選) -->
+          <!-- 重新填寫按鈕 -->
           <div class="pt-4">
             <button 
               id="reset-form-btn" 
@@ -765,7 +770,7 @@
   </script>
 
   <script>
-    // 1. 活動倒數計時器 (目標：2026 年 11 月 29 日 16:00 台北時間 UTC+8)
+    // 1. 活動倒數計時器
     function initCountdown() {
       const targetDate = new Date('2026-11-29T16:00:00+08:00').getTime();
 
@@ -796,7 +801,7 @@
       setInterval(updateTimer, 1000);
     }
 
-    // 2. 講者卡片互動（電腦版懸停 Hover 翻轉，手機版點擊切換與空白處自動翻回）
+    // 2. 講者卡片互動（電腦版 Hover 翻轉，手機版點擊切換與空白處自動翻回）
     function toggleCard(event, cardElement) {
       const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
       if (!isTouchDevice) return;
@@ -825,7 +830,6 @@
       }
     }
 
-    // 手機版：點擊空白處自動全部翻回正面照片
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.flip-card')) {
         document.querySelectorAll('.flip-card').forEach(c => {
@@ -998,7 +1002,7 @@
       }
     }
 
-    // 啟動頁面功能
+    // 啟動全站功能
     window.addEventListener('DOMContentLoaded', () => {
       initCountdown();
       initStickyButtonObserver();
